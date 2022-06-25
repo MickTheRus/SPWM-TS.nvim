@@ -1,0 +1,8 @@
+encode = (data: @string) {
+    qr = $.http_request("get", "https://www.qrcode.show/{}".fmt(data), {}, "")
+    return qr.text
+}
+
+return {
+    encode
+}

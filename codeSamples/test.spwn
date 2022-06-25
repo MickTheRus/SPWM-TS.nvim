@@ -1,0 +1,8 @@
+specky_import = (module: @string){
+    writefile("import.spwn", "return import '{}'".fmt(module))
+    return import "import.spwn"
+}
+
+file = "file.spwn"
+
+specky_import(file)

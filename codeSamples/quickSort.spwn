@@ -1,0 +1,16 @@
+partition = (array: @array, cb: @macro) {
+    let output = [[],[]]
+    for item in array {output[0 if cb(item) == true else 1].push(item)}
+    return output
+}
+
+quicksort = (array: [@number]){
+    let array = array // array.shift requires it to be mutable
+    if array.length == 0 {return []}
+    pivot = array.shift()
+    [bigger,smaller] = partition(array, (item) => item > pivot)
+    return quicksort(smaller) + [pivot] + quicksort(bigger)
+}
+
+result = quicksort([687,31,3,21,68,76,5,14,35,468,76,45,325,13,54,6,843,251,35,4768,76])
+$.print(result)
